@@ -26,6 +26,7 @@ reviews = [
     ]
 keyword_highlighter(reviews)
 
+
 #Task 2: Sentiment Tally
 def sentiment_tally(reviews, positive_words = ["good", "excellent", "great", "awesome", "fantastic", "superb", "amazing"],\
                     negative_words = ["bad", "poor", "terrible", "horrible", "awful", "disappointing", "subpar"]):
@@ -44,3 +45,22 @@ def sentiment_tally(reviews, positive_words = ["good", "excellent", "great", "aw
     #end for
         
 sentiment_tally(reviews)
+
+
+#Task 3: Review Summary
+def review_summary(review):
+    if len(review) <= 30:
+        return review
+    #end if
+    
+    review_words = review.split()
+    truncated_review = ""
+    while len(truncated_review) + len(review_words[0]) < 30:
+        truncated_review += review_words.pop(0) + " "
+    #end while
+    
+    return truncated_review.strip() + "..."
+#end function
+
+long_review = "Here is a very long review that needs to be cut off because it goes on for so long and nobody wants to read it all."
+print(review_summary(long_review))

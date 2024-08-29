@@ -25,3 +25,22 @@ reviews = [
         "The product was average. Nothing extraordinary about it."
     ]
 keyword_highlighter(reviews)
+
+#Task 2: Sentiment Tally
+def sentiment_tally(reviews, positive_words = ["good", "excellent", "great", "awesome", "fantastic", "superb", "amazing"],\
+                    negative_words = ["bad", "poor", "terrible", "horrible", "awful", "disappointing", "subpar"]):
+    positive_count, negative_count = 0, 0
+    for review_num in range(len(reviews)):
+        lower_review = reviews[review_num].lower()
+        for word in positive_words:
+            positive_count += lower_review.count(word)
+        #end for
+        for word in negative_words:
+            negative_count += lower_review.count(word)
+        #end for
+        
+        print(f"Review {review_num + 1}:\n\t-Positive: {positive_count}\n\t-Negative: {negative_count}")
+        positive_count, negative_count = 0, 0
+    #end for
+        
+sentiment_tally(reviews)
